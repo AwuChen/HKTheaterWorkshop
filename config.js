@@ -5,4 +5,4 @@
  *    and optionally allow only your GitHub Pages domain.
  * Leave the key empty only while testing the page layout; submissions will not be sent.
  */
-var WEB3FORMS_ACCESS_KEY = '';
+var WEB3FORMS_ACCESS_KEY = 'ed0e165b-ad45-43e5-bbe5-77b965f214ed';
