@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tatara's HK Theater Camp · 他塔拉的香港戲劇營 · Registration 報名表</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1A1A2E; --navy-mid: #252540; --gold: #C9A84C;
+    --gold-pale: rgba(201,168,76,0.10); --cream: #F0E6D3;
+    --cream-muted: rgba(240,230,211,0.55); --bg: #F8F4EE; --white: #FFFFFF;
+    --border: rgba(0,0,0,0.10); --border-focus: #C9A84C;
+    --text: #2D2D2D; --text-mid: #5A5A5A; --text-light: #8A8A8A;
+    --red: #C0392B; --radius: 8px; --radius-lg: 12px;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem 4rem; }
+  .page-wrap { max-width: 700px; margin: 0 auto; }
+
+  .form-header { background: var(--navy); border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding: 2.5rem 2.5rem 2rem; position: relative; }
+  .form-header::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--gold); border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
+  .header-eyebrow { font-size: 10px; letter-spacing: 2.5px; color: var(--gold); font-weight: 500; margin-bottom: 10px; text-transform: uppercase; }
+  .header-title-en { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--cream); font-weight: 400; line-height: 1.25; }
+  .header-title-zh { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--gold); font-weight: 400; margin-top: 4px; }
+  .header-session { margin-top: 14px; display: inline-flex; align-items: center; gap: 10px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); border-radius: var(--radius); padding: 10px 16px; }
+  .header-session .dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+  .header-session .s-date { font-size: 15px; color: var(--cream); font-weight: 500; line-height: 1.4; }
+  .header-session .s-sub { font-size: 11px; color: var(--cream-muted); }
+
+  .alert-banner { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.3); border-top: none; padding: 13px 2.5rem; display: flex; align-items: flex-start; gap: 9px; }
+  .alert-icon { color: var(--gold); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .alert-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .alert-text strong { color: var(--text); }
+  .alert-text .zh { color: var(--text-light); font-size: 12px; display: block; margin-top: 2px; }
+
+  .form-body { background: var(--white); border-radius: 0 0 var(--radius-lg) var(--radius-lg); overflow: hidden; }
+  .form-section { padding: 1.75rem 2.5rem 0; }
+  .section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 1.25rem; }
+  .section-head-text { font-size: 10px; letter-spacing: 2.5px; color: var(--gold); font-weight: 500; text-transform: uppercase; white-space: nowrap; }
+  .section-head-line { flex: 1; height: 1px; background: var(--border); }
+
+  .field-row { display: grid; gap: 12px; margin-bottom: 14px; }
+  .col-2 { grid-template-columns: 1fr 1fr; }
+  .col-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .col-1 { grid-template-columns: 1fr; }
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field > label { font-size: 12.5px; font-weight: 500; color: var(--text); line-height: 1.3; }
+  .field > label .zh { display: block; font-size: 11px; color: var(--text-light); font-weight: 400; margin-top: 1px; }
+  .field > label .hint { display: block; font-size: 11px; color: var(--text-light); font-weight: 400; font-style: italic; margin-top: 3px; line-height: 1.5; }
+  .field input, .field select, .field textarea { border: 1px solid var(--border); border-radius: var(--radius); padding: 9px 13px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); outline: none; transition: border-color 0.15s, box-shadow 0.15s; width: 100%; }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(201,168,76,0.12); }
+  .field input.invalid, .field select.invalid, .field textarea.invalid { border-color: var(--red); }
+  .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8A8A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+  .field textarea { resize: vertical; min-height: 85px; line-height: 1.55; }
+
+  /* PILL RADIO */
+  .pill-group { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 2px; }
+  .pill-r { display: none; }
+  .pill-l { font-size: 12.5px; padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px; cursor: pointer; color: var(--text-mid); transition: all 0.15s; user-select: none; }
+  .pill-r:checked + .pill-l { border-color: var(--gold); color: var(--navy); background: rgba(201,168,76,0.13); font-weight: 500; }
+  .pill-group.invalid .pill-l { border-color: rgba(192,57,43,0.35); }
+
+  /* MULTI-SELECT TAGS */
+  .tag-group { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .tag-cb { display: none; }
+  .tag-l {
+    font-size: 13px; padding: 8px 15px;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    cursor: pointer; color: var(--text-mid);
+    transition: all 0.15s; user-select: none; line-height: 1.3;
+    text-align: center;
+  }
+  .tag-l .tag-zh { display: block; font-size: 10.5px; color: var(--text-light); margin-top: 2px; }
+  .tag-cb:checked + .tag-l { border-color: var(--gold); color: var(--navy); background: rgba(201,168,76,0.13); font-weight: 500; }
+  .tag-cb:checked + .tag-l .tag-zh { color: var(--navy); }
+  .tag-group.invalid .tag-l { border-color: rgba(192,57,43,0.35); }
+
+  .divider { height: 1px; background: var(--border); margin: 1.5rem 2.5rem 0; }
+  .req { color: var(--red); margin-left: 2px; }
+
+  .policy-box { background: #FAFAFA; border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 14px; }
+  .policy-title { font-size: 12px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+  .policy-title .zh { color: var(--text-light); font-weight: 400; }
+  .policy-item { display: flex; gap: 8px; font-size: 12.5px; color: var(--text-mid); line-height: 1.5; margin-bottom: 6px; }
+  .policy-item::before { content: '–'; color: var(--gold); flex-shrink: 0; }
+  .policy-item .zh { color: var(--text-light); font-size: 11.5px; display: block; }
+
+  .consent-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .consent-row input[type="checkbox"] { margin-top: 3px; accent-color: var(--gold); width: 15px; height: 15px; flex-shrink: 0; cursor: pointer; }
+  .consent-row label { font-size: 13px; color: var(--text-mid); line-height: 1.55; cursor: pointer; }
+  .consent-row label .zh { display: block; font-size: 11.5px; color: var(--text-light); margin-top: 2px; }
+
+  /* LANGUAGE GRID */
+  .lang-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+  .lang-table th { font-size: 11px; color: var(--text-light); font-weight: 400; padding: 4px 8px 8px; text-align: center; }
+  .lang-table th:first-child { text-align: left; padding-left: 0; }
+  .lang-table td { padding: 5px 8px; text-align: center; vertical-align: middle; }
+  .lang-table td:first-child { font-size: 13px; color: var(--text); text-align: left; padding-left: 0; font-weight: 500; }
+  .lang-table td:first-child .zh { font-size: 11px; color: var(--text-light); font-weight: 400; }
+  .lang-r { display: none; }
+  .lang-l { display: inline-block; width: 22px; height: 22px; border: 1px solid var(--border); border-radius: 50%; cursor: pointer; transition: all 0.15s; position: relative; }
+  .lang-l::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; background: transparent; transition: background 0.15s; }
+  .lang-r:checked + .lang-l { border-color: var(--gold); }
+  .lang-r:checked + .lang-l::after { background: var(--gold); }
+  .lang-table.invalid td:first-child { color: var(--red); }
+
+  .submit-area { padding: 1.75rem 2.5rem 2rem; }
+  .form-error-banner { background: rgba(192,57,43,0.07); border: 1px solid rgba(192,57,43,0.25); border-radius: var(--radius); padding: 11px 14px; font-size: 13px; color: var(--red); margin-bottom: 14px; display: none; }
+  .submit-btn { width: 100%; padding: 15px; background: var(--navy); border: none; border-radius: var(--radius); color: var(--gold); font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 400; cursor: pointer; letter-spacing: 0.5px; transition: background 0.15s; }
+  .submit-btn:hover { background: var(--navy-mid); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .submit-note { text-align: center; font-size: 12px; color: var(--text-light); margin-top: 10px; line-height: 1.5; }
+
+  .success-screen { display: none; text-align: center; padding: 3rem 2.5rem; background: var(--white); border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+  .success-icon { font-size: 36px; margin-bottom: 1rem; color: var(--gold); }
+  .success-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 8px; }
+  .success-sub { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+  @media (max-width: 520px) {
+    body { padding: 0 0 3rem; }
+    .form-header, .alert-banner { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .form-section { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .divider { margin-left: 1.25rem; margin-right: 1.25rem; }
+    .submit-area { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .col-2, .col-3 { grid-template-columns: 1fr; }
+    .form-header, .form-body { border-radius: 0; }
+    .success-screen { padding: 2rem 1.25rem; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="form-header">
+    <p class="header-eyebrow">Hong Kong · Summer 2026 · 香港 · 2026 年夏</p>
+    <h1 class="header-title-en">Tatara's HK Theater Camp</h1>
+    <h2 class="header-title-zh">他塔拉的香港戲劇營</h2>
+    <div class="header-session">
+      <div class="dot"></div>
+      <div>
+        <div class="s-date">06.29 – 07.04 &nbsp;·&nbsp; Experiential Theater &nbsp;·&nbsp; 体验式戲劇</div>
+        <div class="s-sub">Mon – Sat &nbsp;·&nbsp; 10:00 – 18:00 &nbsp;·&nbsp; CityU Campus 香港城市大学（暂定）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert-banner">
+    <span class="alert-icon">&#9432;</span>
+    <div class="alert-text">
+      <strong>If multiple students are registering, please fill in a separate form for each student.</strong>
+      <span class="zh">如有多位學員同時報名，請為每位學員分別填寫一份表單。</span>
+    </div>
+  </div>
+
+  <div class="form-body" id="formBody">
+
+    <!-- ABOUT THE STUDENT -->
+    <div class="form-section">
+      <div class="section-head">
+        <span class="section-head-text">About the Student · 關於學員</span>
+        <span class="section-head-line"></span>
+      </div>
+
+      <div class="field-row col-2">
+        <div class="field">
+          <label>Name on ID <span class="req">*</span><span class="zh">證件姓名（與身份證 / 護照一致）</span></label>
+          <input type="text" id="f_id_name" placeholder="As on HKID / Passport">
+        </div>
+        <div class="field">
+          <label>Preferred Name <span class="req">*</span><span class="zh">常用名 / 英文名</span></label>
+          <input type="text" id="f_pref_name" placeholder="What they like to be called">
+        </div>
+      </div>
+
+      <div class="field-row col-3">
+        <div class="field">
+          <label>Age <span class="req">*</span><span class="zh">年齡</span></label>
+          <select id="f_age">
+            <option value="">Select</option>
+            <option>11</option><option>12</option><option>13</option>
+            <option>14</option><option>15</option><option>16</option>
+            <option>17</option><option>18</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Gender <span class="req">*</span><span class="zh">性別</span></label>
+          <select id="f_gender">
+            <option value="">Select</option>
+            <option>Male 男</option>
+            <option>Female 女</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Grade / Year <span class="req">*</span><span class="zh">年級</span></label>
+          <input type="text" id="f_grade" placeholder="e.g. F3 / 中三">
+        </div>
+      </div>
+
+      <div class="field-row col-1">
+        <div class="field">
+          <label>School <span class="req">*</span><span class="zh">就讀學校</span></label>
+          <input type="text" id="f_school" placeholder="School name · 學校名称">
+        </div>
+      </div>
+
+      <div class="field-row col-1">
+        <div class="field">
+          <label>Language comfort <span class="req">*</span><span class="zh">語言舒適度</span></label>
+          <table class="lang-table" id="lang_table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Native<br><span style="font-size:10px;color:var(--text-light)">母語</span></th>
+                <th>Fluent<br><span style="font-size:10px;color:var(--text-light)">流利</span></th>
+                <th>Basic<br><span style="font-size:10px;color:var(--text-light)">基本</span></th>
+                <th>None<br><span style="font-size:10px;color:var(--text-light)">不會</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>English<span class="zh">英文</span></td>
+                <td><input type="radio" name="lang_en" id="en_n" class="lang-r" value="native"><label for="en_n" class="lang-l"></label></td>
+                <td><input type="radio" name="lang_en" id="en_f" class="lang-r" value="fluent"><label for="en_f" class="lang-l"></label></td>
+                <td><input type="radio" name="lang_en" id="en_b" class="lang-r" value="basic"><label for="en_b" class="lang-l"></label></td>
+                <td><input type="radio" name="lang_en" id="en_0" class="lang-r" value="none"><label for="en_0" class="lang-l"></label></td>
+              </tr>
+              <tr>
+                <td>Mandarin<span class="zh">普通話</span></td>
+                <td><input type="radio" name="lang_zh" id="zh_n" class="lang-r" value="native"><label for="zh_n" class="lang-l"></label></td>
+                <td><input type="radio" name="lang_zh" id="zh_f" class="lang-r" value="fluent"><label for="zh_f" class="lang-l"></label></td>
+                <td><input type="radio" name="lang_zh" id="zh_b" class="lang-r" value="basic"><label for="zh_b" class="lang-l"></label></td>
+                <td><input type="radio" name="lang_zh" id="zh_0" class="lang-r" value="none"><label for="zh_0" class="lang-l"></label></td>
+              </tr>
+              <tr>
+                <td>Cantonese<span class="zh">廣東話</span></td>
+                <td><input type="radio" name="lang_yue" id="yue_n" class="lang-r" value="native"><label for="yue_n" class="lang-l"></label></td>
+                <td><input type="radio" name="lang_yue" id="yue_f" class="lang-r" value="fluent"><label for="yue_f" class="lang-l"></label></td>
+                <td><input type="radio" name="lang_yue" id="yue_b" class="lang-r" value="basic"><label for="yue_b" class="lang-l"></label></td>
+                <td><input type="radio" name="lang_yue" id="yue_0" class="lang-r" value="none"><label for="yue_0" class="lang-l"></label></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="field-row col-1">
+        <div class="field">
+          <label>
+            Performance &amp; Arts Background <span class="req">*</span>
+            <span class="zh">表演与才藝背景</span>
+            <span class="hint">Tell us about any experience — drama, singing, dance, instruments, public speaking, sports, or anything else. Zero experience is totally fine. Feel free to brag!<br>戲劇、唱歌、舞蹈、樂器、演講、運動等均可。零基礎完全欢迎，尽情介紹自己！</span>
+          </label>
+          <textarea id="f_exp" placeholder="e.g. Performed in school musical 'Grease' (2024), 3 years classical piano, competitive swimmer… · 如：参演學校音乐剧《Grease》(2024)、古典鋼琴三年、游泳校隊…"></textarea>
+        </div>
+      </div>
+
+      <div class="field-row col-1">
+        <div class="field">
+          <label>
+            What do you hope your student gets out of this camp? <span class="req">*</span>
+            <span class="zh">您希望孩子從這次營地獲得什么？（可多选）</span>
+          </label>
+          <div class="tag-group" id="tg_hope">
+            <input type="checkbox" id="h1" class="tag-cb" value="confidence">
+            <label for="h1" class="tag-l">Confidence<span class="tag-zh">自信心</span></label>
+
+            <input type="checkbox" id="h2" class="tag-cb" value="expression">
+            <label for="h2" class="tag-l">Self-expression<span class="tag-zh">表達力</span></label>
+
+            <input type="checkbox" id="h3" class="tag-cb" value="stagefright">
+            <label for="h3" class="tag-l">Overcome stage fright<span class="tag-zh">克服舞台恐懼</span></label>
+
+            <input type="checkbox" id="h4" class="tag-cb" value="creativity">
+            <label for="h4" class="tag-l">Creativity<span class="tag-zh">創造力</span></label>
+
+            <input type="checkbox" id="h5" class="tag-cb" value="teamwork">
+            <label for="h5" class="tag-l">Teamwork<span class="tag-zh">團隊合作</span></label>
+
+            <input type="checkbox" id="h6" class="tag-cb" value="speaking">
+            <label for="h6" class="tag-l">Public speaking<span class="tag-zh">公眾演講</span></label>
+
+            <input type="checkbox" id="h7" class="tag-cb" value="selfawareness">
+            <label for="h7" class="tag-l">Self-awareness<span class="tag-zh">自我認知</span></label>
+
+            <input type="checkbox" id="h8" class="tag-cb" value="detox">
+            <label for="h8" class="tag-l">Digital detox<span class="tag-zh">放下手機</span></label>
+
+            <input type="checkbox" id="h9" class="tag-cb" value="friends">
+            <label for="h9" class="tag-l">New friendships<span class="tag-zh">結交新朋友</span></label>
+
+            <input type="checkbox" id="h10" class="tag-cb" value="fun">
+            <label for="h10" class="tag-l">Just have fun<span class="tag-zh">開心就好</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-row col-1">
+        <div class="field">
+          <label>Additional notes or special requests <span class="zh">其他叮囑或備註（選填）</span></label>
+          <textarea id="f_notes" placeholder="Anything else you'd like us to know · 任何希望我們了解的事情…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECOND SESSION -->
+    <div class="form-section">
+      <div class="section-head">
+        <span class="section-head-text">Second Session · 加場意向</span>
+        <span class="section-head-line"></span>
+      </div>
+      <div class="field-row col-1">
+        <div class="field">
+          <label>
+            If we open a second session (07.06 – 07.11), would you be willing to switch? <span class="req">*</span>
+            <span class="zh">如果我們加開第二場（07.06 – 07.11），您是否願意更改？</span>
+          </label>
+          <div class="pill-group" id="pg_session">
+            <input type="radio" name="session2" id="s2_yes" class="pill-r" value="yes">
+            <label for="s2_yes" class="pill-l">Willing to switch &nbsp;·&nbsp; 願意更改</label>
+            <input type="radio" name="session2" id="s2_no" class="pill-r" value="no">
+            <label for="s2_no" class="pill-l">Cannot switch &nbsp;·&nbsp; 無法更改</label>
+            <input type="radio" name="session2" id="s2_maybe" class="pill-r" value="maybe">
+            <label for="s2_maybe" class="pill-l">Not sure &nbsp;·&nbsp; 不一定</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SHOWCASE DAY -->
+    <div class="form-section">
+      <div class="section-head">
+        <span class="section-head-text">Showcase Day · 第六天展演日</span>
+        <span class="section-head-line"></span>
+      </div>
+      <div class="field-row col-1">
+        <div class="field">
+          <label>
+            Day 6 (July 4) is the showcase, debrief, and panel discussion — with activities planned for both morning and afternoon. How many family members will be attending? <span class="req">*</span>
+            <span class="zh">第六天（7月4日）為公開展演、複盤会及圓桌論壇，活動将貫穿上下午。請問屆時有多少位家屬出席？（用於場地及午餐預訂）</span>
+          </label>
+          <select id="f_guests">
+            <option value="">Select · 請選擇</option>
+            <option value="0">0 — Student only · 仅學員本人</option>
+            <option value="1">1 person · 1位</option>
+            <option value="2">2 people · 2位</option>
+            <option value="3">3 people · 3位</option>
+            <option value="4">4 people · 4位</option>
+            <option value="5">5 people · 5位</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PARENT -->
+    <div class="form-section">
+      <div class="section-head">
+        <span class="section-head-text">Parent / Guardian · 家長資訊</span>
+        <span class="section-head-line"></span>
+      </div>
+
+      <div class="field-row col-2">
+        <div class="field">
+          <label>Name <span class="req">*</span><span class="zh">姓名</span></label>
+          <input type="text" id="f_parent_name" placeholder="Full name · 全名">
+        </div>
+        <div class="field">
+          <label>Relationship to Student <span class="req">*</span><span class="zh">与學員關係</span></label>
+          <select id="f_relation">
+            <option value="">Select</option>
+            <option>Mother 妈妈</option>
+            <option>Father 爸爸</option>
+            <option>Guardian 监护人</option>
+            <option>Other 其他</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row col-2">
+        <div class="field">
+          <label>Phone Number <span class="req">*</span><span class="zh">手機號碼</span></label>
+          <input type="tel" id="f_phone" placeholder="+852 / +86…">
+        </div>
+        <div class="field">
+          <label>WeChat ID <span class="req">*</span><span class="zh">微信號</span></label>
+          <input type="text" id="f_wechat" placeholder="微信號">
+        </div>
+      </div>
+
+      <div class="field-row col-2">
+        <div class="field">
+          <label>Email <span class="req">*</span><span class="zh">電子郵件（收據及通知）</span></label>
+          <input type="email" id="f_email" placeholder="For receipt & updates">
+        </div>
+        <div class="field">
+          <label>Preferred Contact <span class="req">*</span><span class="zh">首选聯絡方式</span></label>
+          <div class="pill-group" id="pg_contact">
+            <input type="radio" name="contact" id="c_wa" class="pill-r" value="whatsapp">
+            <label for="c_wa" class="pill-l">WhatsApp</label>
+            <input type="radio" name="contact" id="c_wc" class="pill-r" value="wechat">
+            <label for="c_wc" class="pill-l">WeChat 微信</label>
+            <input type="radio" name="contact" id="c_em" class="pill-r" value="email">
+            <label for="c_em" class="pill-l">Email 邮件</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-row col-2">
+        <div class="field">
+          <label>Emergency Contact Name <span class="req">*</span><span class="zh">緊急聯絡人姓名<br>如當天家長不在港，誰來接孩子？</span></label>
+          <input type="text" id="f_emerg_name" placeholder="Full name · 全名">
+        </div>
+        <div class="field">
+          <label>Emergency Contact Phone <span class="req">*</span><span class="zh">緊急聯絡人电话</span></label>
+          <input type="tel" id="f_emerg_phone" placeholder="+852 / +86…">
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- HEALTH -->
+    <div class="form-section">
+      <div class="section-head">
+        <span class="section-head-text">Health & Diet · 健康与飲食</span>
+        <span class="section-head-line"></span>
+      </div>
+      <div class="field-row col-2">
+        <div class="field">
+          <label>Allergies or Medical Conditions <span class="req">*</span><span class="zh">過敏或健康狀況</span></label>
+          <input type="text" id="f_allergy" placeholder="None 无 / Please specify 請說明">
+        </div>
+        <div class="field">
+          <label>Physical Limitations <span class="req">*</span><span class="zh">肢體限制（課程含肢體活動）</span></label>
+          <input type="text" id="f_physical" placeholder="None 无 / Please specify 請說明">
+        </div>
+      </div>
+      <div class="field-row col-1">
+        <div class="field">
+          <label>
+            Dietary restrictions <span class="req">*</span>
+            <span class="zh">飲食限制</span>
+            <span class="hint">We will be providing lunch and snacks daily — please let us know of any dietary needs. · 營地每天提供午餐及零食，請告知任何飲食要求。</span>
+          </label>
+          <input type="text" id="f_diet" placeholder="e.g. Vegetarian, halal, nut allergy, no pork… · 如：素食、清真、堅果過敏、不吃豬肉… / None 无">
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- REFERRAL -->
+    <div class="form-section">
+      <div class="section-head">
+        <span class="section-head-text">Referral · 推薦人</span>
+        <span class="section-head-line"></span>
+      </div>
+      <div class="field-row col-1">
+        <div class="field">
+          <label>Referred by <span class="zh">推薦人姓名（選填）</span></label>
+          <input type="text" id="f_referral" placeholder="Optional · 選填">
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CONSENT -->
+    <div class="form-section">
+      <div class="section-head">
+        <span class="section-head-text">Consent & Policy · 條款確認</span>
+        <span class="section-head-line"></span>
+      </div>
+
+      <div class="policy-box">
+        <p class="policy-title">Refund & Cancellation Policy <span class="zh">退款及取消政策</span></p>
+        <div class="policy-item">
+          Cancellations made <strong>on or before June 15 (14 days before camp)</strong> are eligible for a full refund.
+          <span class="zh"><strong>6月15日或之前</strong>（開營前14天）取消，可获全額退款。</span>
+        </div>
+        <div class="policy-item">
+          Cancellations made <strong>after June 15</strong> are non-refundable. However, your spot may be <strong>transferred to another student</strong> — please contact us to arrange.
+          <span class="zh"><strong>6月15日之後</strong>取消，恕不退款。但名額可<strong>自行轉讓</strong>，聯繫我們辦理。</span>
+        </div>
+        <div class="policy-item">
+          A <strong>minimum of 8 students</strong> is required to run the camp. If this is not met, all registered students will receive a full refund.
+          <span class="zh">須滿 <strong>8人</strong> 方可成班。如未达人数下限，所有已報名學員将获全額退款。</span>
+        </div>
+        <div class="policy-item">
+          If the camp is cancelled by the organiser due to circumstances beyond our control, a full refund will be issued.
+          <span class="zh">如因不可抗力由主辦方取消營地，将向所有學員發放全額退款。</span>
+        </div>
+      </div>
+
+      <div class="consent-row">
+        <input type="checkbox" id="ch_photo">
+        <label for="ch_photo">
+          I consent to photo and video recording of the student for documentation and promotional use, including the personal growth short film produced at camp.
+          <span class="zh">本人同意對學員進行照片及影像記錄，用於紀錄短片製作及宣傳用途。</span>
+        </label>
+      </div>
+      <div class="consent-row">
+        <input type="checkbox" id="ch_policy">
+        <label for="ch_policy">
+          I have read and agree to the Refund & Cancellation Policy above.
+          <span class="zh">本人已閱讀并同意上述退款及取消政策。</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="submit-area">
+      <div class="form-error-banner" id="errorBanner">
+        Please complete all required fields before submitting. · 請填寫所有必填項後再提交。
+      </div>
+      <button class="submit-btn" type="button" id="submitBtn" onclick="handleSubmit()">Submit Registration · 提交報名 →</button>
+      <p class="submit-note">
+        We will confirm your registration via your preferred contact method within 48 hours.<br>
+        我們將於 48 小時内通過您選擇的聯絡方式確認報名。
+      </p>
+    </div>
+
+  </div>
+
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✦</div>
+    <h2 class="success-title">Registration Received · 報名已收到</h2>
+    <p class="success-sub">
+      Thank you! We will be in touch within 48 hours to confirm your spot.<br>
+      謝謝！我們將於 48 小時内聯繫您確認名額。<br><br>
+      <em style="font-size:12px;color:var(--text-light);">Tatara's HK Theater Camp 2026 · 他塔拉的香港戲劇營</em>
+    </p>
+  </div>
+
+</div>
+<script src="config.js"></script>
+<script>
+var WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+
+function rad(name) {
+  var el = document.querySelector('input[name="' + name + '"]:checked');
+  return el ? el.value : '';
+}
+function val(id) {
+  var el = document.getElementById(id);
+  return el && el.value ? el.value.trim() : '';
+}
+function buildSubmissionMessage() {
+  var hopeTags = [].map.call(document.querySelectorAll('#tg_hope input:checked'), function (cb) { return cb.value; });
+  return [
+    '— About the student · 學員 —',
+    'Name on ID: ' + val('f_id_name'),
+    'Preferred name: ' + val('f_pref_name'),
+    'Age: ' + val('f_age'),
+    'Gender: ' + val('f_gender'),
+    'Grade: ' + val('f_grade'),
+    'School: ' + val('f_school'),
+    'English: ' + rad('lang_en') + ' · Mandarin: ' + rad('lang_zh') + ' · Cantonese: ' + rad('lang_yue'),
+    'Background: ' + val('f_exp'),
+    'Hopes: ' + hopeTags.join(', '),
+    'Notes: ' + val('f_notes'),
+    '',
+    '— Second session · 加場 —',
+    'Switch 07.06–07.11: ' + rad('session2'),
+    '',
+    '— Showcase · 展演 —',
+    'Family guests: ' + val('f_guests'),
+    '',
+    '— Parent / Guardian · 家長 —',
+    'Name: ' + val('f_parent_name'),
+    'Relation: ' + val('f_relation'),
+    'Phone: ' + val('f_phone'),
+    'WeChat: ' + val('f_wechat'),
+    'Email: ' + val('f_email'),
+    'Preferred contact: ' + rad('contact'),
+    'Emergency name: ' + val('f_emerg_name'),
+    'Emergency phone: ' + val('f_emerg_phone'),
+    '',
+    '— Health & diet · 健康 —',
+    'Allergies: ' + val('f_allergy'),
+    'Physical: ' + val('f_physical'),
+    'Diet: ' + val('f_diet'),
+    '',
+    'Referral: ' + (val('f_referral') || '—'),
+    'Photo consent: ' + (document.getElementById('ch_photo').checked ? 'Yes' : 'No'),
+    'Policy consent: ' + (document.getElementById('ch_policy').checked ? 'Yes' : 'No')
+  ].join('\n');
+}
+
+function handleSubmit() {
+  var ok = true;
+
+  var texts = ['f_id_name','f_pref_name','f_grade','f_school','f_exp',
+               'f_parent_name','f_phone','f_wechat','f_email',
+               'f_emerg_name','f_emerg_phone',
+               'f_allergy','f_physical','f_diet'];
+  var selects = ['f_age','f_gender','f_relation','f_guests'];
+
+  texts.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el.value.trim()) { el.classList.add('invalid'); ok = false; } else el.classList.remove('invalid');
+  });
+  selects.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el.value) { el.classList.add('invalid'); ok = false; } else el.classList.remove('invalid');
+  });
+
+  ['lang_en','lang_zh','lang_yue'].forEach(function(name) {
+    if (!document.querySelector('input[name="' + name + '"]:checked')) ok = false;
+  });
+  var allLangOk = ['lang_en','lang_zh','lang_yue'].every(function(n) {
+    return !!document.querySelector('input[name="' + n + '"]:checked');
+  });
+  var lt = document.getElementById('lang_table');
+  if (!allLangOk) { lt.classList.add('invalid'); ok = false; } else lt.classList.remove('invalid');
+
+  [['session2','pg_session'],['contact','pg_contact']].forEach(function(g) {
+    var checked = document.querySelector('input[name="' + g[0] + '"]:checked');
+    var pg = document.getElementById(g[1]);
+    if (!checked) { pg.classList.add('invalid'); ok = false; } else pg.classList.remove('invalid');
+  });
+
+  var hopePicked = document.querySelectorAll('#tg_hope input:checked').length > 0;
+  var tg = document.getElementById('tg_hope');
+  if (!hopePicked) { tg.classList.add('invalid'); ok = false; } else tg.classList.remove('invalid');
+
+  ['ch_photo','ch_policy'].forEach(function(id) {
+    if (!document.getElementById(id).checked) ok = false;
+  });
+
+  var banner = document.getElementById('errorBanner');
+  if (!ok) {
+    banner.textContent = 'Please complete all required fields before submitting. · 請填寫所有必填項後再提交。';
+    banner.style.display = 'block';
+    var first = document.querySelector('.invalid');
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  var key = (typeof WEB3FORMS_ACCESS_KEY === 'string' && WEB3FORMS_ACCESS_KEY.trim());
+  if (!key) {
+    banner.textContent = 'Form is not connected yet (add WEB3FORMS_ACCESS_KEY in config.js). · 尚未連接提交通道，請在 config.js 填寫金鑰。';
+    banner.style.display = 'block';
+    return;
+  }
+
+  banner.style.display = 'none';
+  var submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = true;
+  var prevLabel = submitBtn.textContent;
+  submitBtn.textContent = 'Sending… · 提交中…';
+
+  var subject = "Tatara's HK Camp — " + val('f_pref_name') + ' / ' + val('f_id_name');
+  var payload = {
+    access_key: key,
+    subject: subject,
+    from_name: val('f_parent_name') + ' ( ' + val('f_pref_name') + ' )',
+    email: val('f_email'),
+    message: buildSubmissionMessage()
+  };
+
+  fetch(WEB3FORMS_ENDPOINT, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' }
+  })
+    .then(function (res) {
+      return res
+        .json()
+        .catch(function () { return {}; })
+        .then(function (data) { return { data: data }; });
+    })
+    .then(function (r) {
+      if (r.data && r.data.success) {
+        document.getElementById('formBody').style.display = 'none';
+        var s = document.getElementById('successScreen');
+        s.style.display = 'block';
+        s.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+      var err = (r.data && r.data.message) ? r.data.message : 'Submit failed. · 提交失敗。';
+      banner.textContent = err;
+      banner.style.display = 'block';
+    })
+    .catch(function () {
+      banner.textContent = 'Network error — please try again later. · 網絡錯誤，請稍後重試。';
+      banner.style.display = 'block';
+    })
+    .then(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = prevLabel;
+    });
+}
+</script>
+</body>
+</html>
